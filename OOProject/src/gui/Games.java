@@ -3,6 +3,7 @@ package gui;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 
 public class Games {
 
@@ -38,6 +39,11 @@ public class Games {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(null);
+		
+		JLabel lblGames = new JLabel("Games");
+		lblGames.setBounds(190, 6, 61, 16);
+		frame.getContentPane().add(lblGames);
 	}
 
 }
