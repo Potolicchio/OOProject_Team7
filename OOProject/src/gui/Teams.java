@@ -7,6 +7,8 @@ import javax.swing.JScrollPane;
 import java.awt.List;
 import java.awt.GridLayout;
 import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.JScrollBar;
 
 public class Teams {
 
