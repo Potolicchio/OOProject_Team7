@@ -1,4 +1,4 @@
-package ooproject_team7;
+package application;
 
 /**
  * A class that represents a player 

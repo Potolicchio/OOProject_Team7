@@ -1,4 +1,4 @@
-package ooproject_team7;
+package application;
 
 public class Games {
 	

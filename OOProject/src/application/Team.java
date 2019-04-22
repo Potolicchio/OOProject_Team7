@@ -1,4 +1,4 @@
-package ooproject_team7;
+package application;
 
 import java.util.ArrayList;
 
@@ -6,8 +6,8 @@ public class Team {
 	
 	public Team(String division, String name)
 	{
-		this.team = division;
-		this. = name;
+		this.division = division;
+		this.name = name;
 	}
 	
 	public void addPlayer() 
