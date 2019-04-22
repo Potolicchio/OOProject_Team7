@@ -61,20 +61,20 @@ public class Registration_Form {
 		Registration.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		Registration.getContentPane().setLayout(null);
 		
-		JLabel lblNewLabel_1 = new JLabel("X");
-		lblNewLabel_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		lblNewLabel_1.addMouseListener(new MouseAdapter() {
+		JLabel close = new JLabel("X");
+		close.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		close.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				
 				Login.main(null);
 			}
 		});
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblNewLabel_1.setBackground(Color.WHITE);
-		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_1.setBounds(0, 0, 35, 14);
-		Registration.getContentPane().add(lblNewLabel_1);
+		close.setFont(new Font("Tahoma", Font.BOLD, 14));
+		close.setBackground(Color.WHITE);
+		close.setHorizontalAlignment(SwingConstants.CENTER);
+		close.setBounds(0, 0, 35, 14);
+		Registration.getContentPane().add(close);
 		
 		JLabel lblbackground = new JLabel("");
 		lblbackground.setBackground(new Color(255, 215, 0));
