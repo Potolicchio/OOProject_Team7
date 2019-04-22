@@ -12,10 +12,15 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.Cursor;
 import javax.swing.JTextField;
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 import java.awt.event.ActionEvent;
 import javax.swing.JPasswordField;
+import javax.swing.JRadioButton;
+import javax.swing.JPanel;
+import javax.swing.JRadioButtonMenuItem;
 
 public class Registration_Form {
 
@@ -76,6 +81,12 @@ public class Registration_Form {
 		close.setBounds(0, 0, 35, 14);
 		Registration.getContentPane().add(close);
 		
+
+		JLabel lblRegistrationForm = new JLabel("Registration Form");
+		lblRegistrationForm.setFont(new Font("Verdana", Font.BOLD | Font.ITALIC, 16));
+		lblRegistrationForm.setBounds(490, 30, 186, 28);
+		Registration.getContentPane().add(lblRegistrationForm);
+		
 		JLabel lblbackground = new JLabel("");
 		lblbackground.setBackground(new Color(255, 215, 0));
 		lblbackground.setOpaque(true);
@@ -121,6 +132,45 @@ public class Registration_Form {
 		lblConfirmPassword.setBounds(319, 304, 132, 14);
 		Registration.getContentPane().add(lblConfirmPassword);
 		
+		txtPassword = new JPasswordField();
+		txtPassword.setBounds(319, 265, 282, 28);
+		Registration.getContentPane().add(txtPassword);
+		
+		txtConfirmPassword = new JPasswordField();
+		txtConfirmPassword.setBounds(319, 319, 282, 28);
+		Registration.getContentPane().add(txtConfirmPassword);
+		
+		/**
+		 * Radio button selection
+		 */
+		JRadioButton rb_User = new JRadioButton("User");
+		rb_User.setBounds(646, 147, 109, 23);
+		rb_User.setMnemonic(KeyEvent.VK_B);
+	    rb_User.setActionCommand("User");
+		Registration.getContentPane().add(rb_User);
+		
+		JRadioButton rb_Player = new JRadioButton("Player");
+		rb_Player.setBounds(646, 188, 109, 23);
+		Registration.getContentPane().add(rb_Player);
+		
+		JRadioButton rb_Coach = new JRadioButton("Coach");
+		rb_Coach.setBounds(646, 234, 109, 23);
+		Registration.getContentPane().add(rb_Coach);
+		
+		JRadioButton rb_Referree = new JRadioButton("Referree");
+		rb_Referree.setBounds(646, 281, 109, 23);
+		Registration.getContentPane().add(rb_Referree);
+		
+		 //Group the radio buttons.
+	    ButtonGroup group = new ButtonGroup();
+	    group.add(rb_User);
+	    group.add(rb_Player);
+	    group.add(rb_Coach);
+	    group.add(rb_Referree);
+		
+	    
+	
+		
 		JButton btnNewButton = new JButton("Submit");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -139,23 +189,15 @@ public class Registration_Form {
 				txtEmail.setText(null);
 				txtPassword.setText(null);
 				txtConfirmPassword.setText(null);
+				System.out.println(group.getSelection().toString());
+				group.getSelection().setSelected(false);
 			}
 		});
 		
 		btnReset.setBounds(321, 378, 89, 23);
 		Registration.getContentPane().add(btnReset);
 		
-		JLabel lblRegistrationForm = new JLabel("Registration Form");
-		lblRegistrationForm.setFont(new Font("Verdana", Font.BOLD | Font.ITALIC, 16));
-		lblRegistrationForm.setBounds(490, 30, 186, 28);
-		Registration.getContentPane().add(lblRegistrationForm);
 		
-		txtPassword = new JPasswordField();
-		txtPassword.setBounds(319, 265, 282, 28);
-		Registration.getContentPane().add(txtPassword);
-		
-		txtConfirmPassword = new JPasswordField();
-		txtConfirmPassword.setBounds(319, 319, 282, 28);
-		Registration.getContentPane().add(txtConfirmPassword);
+	    
 	}
 }

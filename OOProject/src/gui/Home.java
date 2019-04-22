@@ -48,25 +48,30 @@ public class Home {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setBounds(10, 7, 125, 14);
+		frame.getContentPane().add(lblNewLabel);
+		
 		JLabel lblHome = new JLabel("Home");
 		lblHome.setBounds(210, 6, 61, 16);
 		frame.getContentPane().add(lblHome);
 		
-		JButton btnNewButton = new JButton("Games");
-		btnNewButton.addActionListener(new ActionListener() {
+		
+		JButton btnGames = new JButton("Games");
+		btnGames.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnNewButton.setBounds(174, 34, 117, 29);
-		frame.getContentPane().add(btnNewButton);
+		btnGames.setBounds(174, 34, 117, 29);
+		frame.getContentPane().add(btnGames);
 		
-		JButton btnNewButton_1 = new JButton("Schedule");
-		btnNewButton_1.setBounds(174, 75, 117, 29);
-		frame.getContentPane().add(btnNewButton_1);
+		JButton btnSchedule = new JButton("Schedule");
+		btnSchedule.setBounds(174, 75, 117, 29);
+		frame.getContentPane().add(btnSchedule);
 		
-		JButton btnNewButton_2 = new JButton("Teams");
-		btnNewButton_2.setBounds(174, 116, 117, 29);
-		frame.getContentPane().add(btnNewButton_2);
+		JButton btnTeams = new JButton("Teams");
+		btnTeams.setBounds(174, 116, 117, 29);
+		frame.getContentPane().add(btnTeams);
 		
 		JButton btnAccount = new JButton("Account");
 		btnAccount.setBounds(174, 157, 117, 29);
@@ -75,5 +80,6 @@ public class Home {
 		JButton btnLogOut = new JButton("Log Out");
 		btnLogOut.setBounds(174, 199, 117, 29);
 		frame.getContentPane().add(btnLogOut);
+		
 	}
 }

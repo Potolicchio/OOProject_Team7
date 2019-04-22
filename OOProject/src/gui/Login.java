@@ -77,12 +77,12 @@ public class Login
 		/**
 		 * Create the labeling
 		 */
-		JLabel lblUsernameLabel = new JLabel("Username");
-		lblUsernameLabel.setFont(new Font("Arial", Font.ITALIC, 14));
-		lblUsernameLabel.setBounds(24, 99, 75, 17);
-		frmLogin.getContentPane().add(lblUsernameLabel);
+		JLabel lblEmail = new JLabel("Email:");
+		lblEmail.setFont(new Font("Arial", Font.ITALIC, 14));
+		lblEmail.setBounds(24, 99, 75, 17);
+		frmLogin.getContentPane().add(lblEmail);
 		
-		JLabel lblPassword = new JLabel("Password");
+		JLabel lblPassword = new JLabel("Password:");
 		lblPassword.setFont(new Font("Arial", Font.ITALIC, 14));
 		lblPassword.setBounds(24, 154, 75, 14);
 		frmLogin.getContentPane().add(lblPassword);
@@ -108,7 +108,7 @@ public class Login
 		{
 			public void actionPerformed(ActionEvent arg0) 
 			{
-				String password = txtPassword.getText();
+				String password = String.valueOf(txtPassword.getPassword());
 				String username = txtUsername.getText();
 				
 				if (password.contains("king") && username.contains("One")) {
@@ -119,7 +119,7 @@ public class Login
 					Home.main(null);
 				}
 				else
-				{
+				{ 
 					JOptionPane.showMessageDialog(null, "Invalid Login Details", "Login Error", JOptionPane.ERROR_MESSAGE);
 				}
 				
