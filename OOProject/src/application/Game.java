@@ -1,8 +1,8 @@
 package application;
 
-public class Games {
+public class Game {
 	
-	public Games()
+	public Game()
 	{
 		
 	}

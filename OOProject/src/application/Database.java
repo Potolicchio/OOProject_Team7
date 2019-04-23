@@ -1,6 +1,8 @@
 package application;
 
+import java.io.*;
 import java.sql.*;
+import java.util.Properties;
 
 public class Database {
 	
@@ -8,13 +10,24 @@ public class Database {
 	{
 		Connection myConn = null;
 		
+		Properties props = new Properties();
+		
 		try 
 		{	
+			//Get DB properties
+			props.load(new FileInputStream("properties"));
+			
+			String user = props.getProperty("user");
+			String password = props.getProperty("password");
+			String dburl = props.getProperty("dburl");
+			
 			//No longer needed in newer versions of the J Connector
 			//Class.forName("com.mysql.cj.jdbc.Driver");
 				
-			// 1. Get a connection to the database
-			myConn = DriverManager.getConnection("jdbc:mysql://localhost:3306/ooproject", "root", "OOproject2019");
+			// Get a connection to the database
+			myConn = DriverManager.getConnection(dburl, user, password);
+			
+			System.out.println("Connection to DB: " + dburl + " - SUCCESFUL.");
 		}
 		catch (Exception exc)	
 		{
