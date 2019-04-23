@@ -1,13 +1,11 @@
 package application;
 
-import java.util.ArrayList;
-
 public class Team {
 	
-	public Team(int division, String name, int standing, int wins, int losses, int ties, int points)
+	public Team(String name, int division, int standing, int wins, int losses, int ties, int points)
 	{
-		this.division = division;
 		this.name = name;
+		this.division = division;
 		this.standing = standing;
 		this.wins = wins;
 		this.losses = wins;
@@ -17,16 +15,6 @@ public class Team {
 	
 	// Getters and Setters
 	
-	public int getDivision()
-	{
-		return division;
-	}
-	
-	public void setDivision(int division)
-	{
-		this.division = division;
-	}
-	
 	public String getName()
 	{
 		return name;
@@ -35,6 +23,16 @@ public class Team {
 	public void setName(String name)
 	{
 		this.name = name;
+	}
+	
+	public int getDivision()
+	{
+		return division;
+	}
+	
+	public void setDivision(int division)
+	{
+		this.division = division;
 	}
 	
 	public int getStanding()
@@ -104,8 +102,8 @@ public class Team {
 		return points;
 	}
 	
-	private int division;
 	private String name;
+	private int division;
 	private int standing;
 	private int wins;
 	private int losses;
