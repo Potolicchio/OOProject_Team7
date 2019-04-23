@@ -4,15 +4,24 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import javax.swing.SwingConstants;
+
+import application.Database;
+
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.awt.Cursor;
 import javax.swing.JTextField;
 import javax.swing.ButtonGroup;
+import javax.swing.ButtonModel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -145,20 +154,22 @@ public class Registration_Form {
 		 */
 		JRadioButton rb_User = new JRadioButton("User");
 		rb_User.setBounds(646, 147, 109, 23);
-		rb_User.setMnemonic(KeyEvent.VK_B);
 	    rb_User.setActionCommand("User");
 		Registration.getContentPane().add(rb_User);
 		
 		JRadioButton rb_Player = new JRadioButton("Player");
 		rb_Player.setBounds(646, 188, 109, 23);
+	    rb_User.setActionCommand("Player");
 		Registration.getContentPane().add(rb_Player);
 		
 		JRadioButton rb_Coach = new JRadioButton("Coach");
 		rb_Coach.setBounds(646, 234, 109, 23);
+	    rb_User.setActionCommand("Coach");
 		Registration.getContentPane().add(rb_Coach);
 		
 		JRadioButton rb_Referree = new JRadioButton("Referree");
 		rb_Referree.setBounds(646, 281, 109, 23);
+	    rb_User.setActionCommand("Referree");
 		Registration.getContentPane().add(rb_Referree);
 		
 		 //Group the radio buttons.
@@ -173,9 +184,47 @@ public class Registration_Form {
 		
 		JButton btnNewButton = new JButton("Submit");
 		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
+			public void actionPerformed(ActionEvent arg0) 
+			{
+				String fname = txtFirstname.getText();
+				String lname = txtLastname.getText();
+				String email = txtEmail.getText();
+				String pword = String.valueOf(txtPassword.getPassword());
+				String type = "";
+				
+				if (fname.equals(null))
+					JOptionPane.showMessageDialog(null, "Add a firstname", "Error", JOptionPane.ERROR_MESSAGE);
+				
+				else if  (lname.equals(null))
+					JOptionPane.showMessageDialog(null, "Add a lastname", "Error", JOptionPane.ERROR_MESSAGE);
+				
+				else if (email.equals(null) || !email.contains("@") && !email.contains(".com"))
+					JOptionPane.showMessageDialog(null, "Invalid email", "Error", JOptionPane.ERROR_MESSAGE);
+				
+				if (pword.equals(null));
+							JOptionPane.showMessageDialog(null, "Please enter your password", "Error", JOptionPane.ERROR_MESSAGE);
+					
+				if (!pword.equals(String.valueOf(txtConfirmPassword.getPassword())))
+						JOptionPane.showMessageDialog(null, "Password does not match", "Error", JOptionPane.ERROR_MESSAGE);
+					
+				if (group.getSelection() == null)
+					JOptionPane.showMessageDialog(null, "Please select a type.", "Error", JOptionPane.ERROR_MESSAGE);
+				else 
+					type = group.getSelection().getActionCommand();
+				
+				
+				String query  = "INSERT INTO Login values";
+				PreparedStatement ps;
+				
+				try {
+					ps = Database.getConnection().prepareStatement(query);
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			
 			}
 		});
+		
 		btnNewButton.setBounds(721, 378, 89, 23);
 		Registration.getContentPane().add(btnNewButton);
 		
@@ -189,8 +238,6 @@ public class Registration_Form {
 				txtEmail.setText(null);
 				txtPassword.setText(null);
 				txtConfirmPassword.setText(null);
-				System.out.println(group.getSelection().toString());
-				group.getSelection().setSelected(false);
 			}
 		});
 		
