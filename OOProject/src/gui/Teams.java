@@ -46,9 +46,9 @@ public class Teams {
 		}
 	}
 	
-	public ArrayList<Team> searchTeams(String teamName) throws Exception
+	public List<Team> searchTeams(String teamName) throws Exception
 	{
-		ArrayList<Team> list = new ArrayList<>();
+		List<Team> list = new ArrayList<>();
 		
 		PreparedStatement myStmt = null;
 		ResultSet myRs = null;
