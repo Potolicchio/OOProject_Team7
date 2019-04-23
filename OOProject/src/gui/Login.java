@@ -1,5 +1,4 @@
 package gui;
-
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -11,11 +10,18 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
 import java.awt.Cursor;
 
 import javax.swing.UIManager;
+
+import application.Database;
+
 import javax.swing.JSeparator;
 import java.awt.Font;
 import javax.swing.ImageIcon;
@@ -106,12 +112,34 @@ public class Login
 		btnLogin.setFont(new Font("Tahoma", Font.BOLD, 12));
 		btnLogin.addActionListener(new ActionListener() 
 		{
-			public void actionPerformed(ActionEvent arg0) 
-			{
+			public void actionPerformed(ActionEvent arg0) {
+				PreparedStatement ps;
+				ResultSet rs;
 				String password = String.valueOf(txtPassword.getPassword());
 				String username = txtUsername.getText();
+				String query = "SELECT * FROM Login WHERE email = ? AND password = ?";
 				
-				if (password.contains("king") && username.contains("One")) {
+				
+				// Connect to database
+				try {
+					ps = Database.getConnection().prepareStatement(query);
+					ps.setString(1, username);
+					ps.setString(2, password);
+					rs = ps.executeQuery();
+					
+					if (rs.next())
+					{
+						Home.main(null);
+						frmLogin.setVisible(false);
+					}
+					else
+						JOptionPane.showMessageDialog(null, "Invalid Login Details", "Login Error", JOptionPane.ERROR_MESSAGE);
+					
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+								
+				/*if (password.contains("king") && username.contains("One")) {
 					txtPassword.setText(null);
 					txtUsername.setText(null);
 					
@@ -120,11 +148,12 @@ public class Login
 				}
 				else
 				{ 
-					JOptionPane.showMessageDialog(null, "Invalid Login Details", "Login Error", JOptionPane.ERROR_MESSAGE);
-				}
+					
+				}*/
 				
 			}
 		});
+		
 		btnLogin.setBounds(49, 227, 89, 23);
 		frmLogin.getContentPane().add(btnLogin);
 		
