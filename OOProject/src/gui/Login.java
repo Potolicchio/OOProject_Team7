@@ -122,15 +122,16 @@ public class Login
 				
 				// Connect to database
 				try {
-					ps = Database.getConnection().prepareStatement(query);
-					ps.setString(1, username);
-					ps.setString(2, password);
-					rs = ps.executeQuery();
+						ps = Database.getConnection().prepareStatement(query);
+						ps.setString(1, username);
+						ps.setString(2, password);
+						rs = ps.executeQuery();
 					
 					if (rs.next())
 					{
+						frmLogin.dispose();
+						ps.close();
 						Home.main(null);
-						frmLogin.setVisible(false);
 					}
 					else
 						JOptionPane.showMessageDialog(null, "Invalid Login Details", "Login Error", JOptionPane.ERROR_MESSAGE);

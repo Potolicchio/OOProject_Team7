@@ -70,6 +70,11 @@ public class Home {
 		frame.getContentPane().add(btnSchedule);
 		
 		JButton btnTeams = new JButton("Teams");
+		btnTeams.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				Teams.main(null);
+			}
+		});
 		btnTeams.setBounds(174, 116, 117, 29);
 		frame.getContentPane().add(btnTeams);
 		

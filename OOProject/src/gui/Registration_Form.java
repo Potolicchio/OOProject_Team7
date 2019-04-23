@@ -80,8 +80,7 @@ public class Registration_Form {
 		close.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				
-				Login.main(null);
+				Registration.dispose();
 			}
 		});
 		close.setFont(new Font("Tahoma", Font.BOLD, 14));
@@ -153,22 +152,22 @@ public class Registration_Form {
 		 * Radio button selection
 		 */
 		JRadioButton rb_User = new JRadioButton("User");
-		rb_User.setBounds(646, 147, 109, 23);
+		rb_User.setBounds(646, 188, 109, 23);
 	    rb_User.setActionCommand("User");
 		Registration.getContentPane().add(rb_User);
 		
 		JRadioButton rb_Player = new JRadioButton("Player");
-		rb_Player.setBounds(646, 188, 109, 23);
+		rb_Player.setBounds(646, 208, 109, 23);
 	    rb_User.setActionCommand("Player");
 		Registration.getContentPane().add(rb_Player);
 		
 		JRadioButton rb_Coach = new JRadioButton("Coach");
-		rb_Coach.setBounds(646, 234, 109, 23);
+		rb_Coach.setBounds(646, 230, 109, 23);
 	    rb_User.setActionCommand("Coach");
 		Registration.getContentPane().add(rb_Coach);
 		
 		JRadioButton rb_Referree = new JRadioButton("Referree");
-		rb_Referree.setBounds(646, 281, 109, 23);
+		rb_Referree.setBounds(646, 250, 109, 23);
 	    rb_User.setActionCommand("Referree");
 		Registration.getContentPane().add(rb_Referree);
 		
@@ -179,9 +178,24 @@ public class Registration_Form {
 	    group.add(rb_Coach);
 	    group.add(rb_Referree);
 		
-	    
-	
+	    JLabel lblGender = new JLabel("Gender");
+		lblGender.setBounds(319, 224, 47, 14);
+		Registration.getContentPane().add(lblGender);
 		
+		JRadioButton rb_Male = new JRadioButton("Male");
+		rb_Male.setBounds(369, 220, 53, 23);
+		rb_User.setActionCommand("Male");
+		Registration.getContentPane().add(rb_Male);
+		
+		JRadioButton rb_Female = new JRadioButton("Female");
+		rb_Female.setBounds(424, 220, 65, 23);
+		rb_User.setActionCommand("Female");
+		Registration.getContentPane().add(rb_Female);
+	
+		 ButtonGroup genderGroup = new ButtonGroup();
+		 genderGroup.add(rb_Male);
+		 genderGroup.add(rb_Female);
+		 
 		JButton btnNewButton = new JButton("Submit");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) 
@@ -189,21 +203,18 @@ public class Registration_Form {
 				String fname = txtFirstname.getText();
 				String lname = txtLastname.getText();
 				String email = txtEmail.getText();
-				String pword = String.valueOf(txtPassword.getPassword());
+				String pword = txtPassword.getText();
 				String type = "";
 				
-				if (fname.equals(null))
+				if (fname.equals(""))
 					JOptionPane.showMessageDialog(null, "Add a firstname", "Error", JOptionPane.ERROR_MESSAGE);
 				
-				else if  (lname.equals(null))
+				else if  (lname.equals(""))
 					JOptionPane.showMessageDialog(null, "Add a lastname", "Error", JOptionPane.ERROR_MESSAGE);
 				
-				else if (email.equals(null) || !email.contains("@") && !email.contains(".com"))
+				else if (email.equals("") || !email.contains("@") && !email.contains(".com"))
 					JOptionPane.showMessageDialog(null, "Invalid email", "Error", JOptionPane.ERROR_MESSAGE);
 				
-				if (pword.equals(null));
-							JOptionPane.showMessageDialog(null, "Please enter your password", "Error", JOptionPane.ERROR_MESSAGE);
-					
 				if (!pword.equals(String.valueOf(txtConfirmPassword.getPassword())))
 						JOptionPane.showMessageDialog(null, "Password does not match", "Error", JOptionPane.ERROR_MESSAGE);
 					
@@ -212,12 +223,19 @@ public class Registration_Form {
 				else 
 					type = group.getSelection().getActionCommand();
 				
-				
-				String query  = "INSERT INTO Login values";
-				PreparedStatement ps;
-				
+								
 				try {
-					ps = Database.getConnection().prepareStatement(query);
+						String query  = "INSERT INTO Login (email, password)";
+						PreparedStatement ps;
+
+						ps = Database.getConnection().prepareStatement(query);
+						ps.setString(1, email);
+						ps.setString(2, pword);
+					
+						if (ps.executeUpdate() > 0)
+							JOptionPane.showMessageDialog(null, "New Account Added.");
+					ps.close();
+					
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
@@ -244,6 +262,10 @@ public class Registration_Form {
 		btnReset.setBounds(321, 378, 89, 23);
 		Registration.getContentPane().add(btnReset);
 		
+		JLabel lblAccountType = new JLabel("Account Type:");
+		lblAccountType.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblAccountType.setBounds(646, 171, 91, 14);
+		Registration.getContentPane().add(lblAccountType);
 		
 	    
 	}
