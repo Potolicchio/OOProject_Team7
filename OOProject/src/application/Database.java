@@ -14,7 +14,7 @@ public class Database {
 			//Class.forName("com.mysql.cj.jdbc.Driver");
 				
 			// 1. Get a connection to the database
-			myConn = DriverManager.getConnection("jdbc:mysql://localhost:3306/ooproject", "root", "Poto@SQL2019!");
+			myConn = DriverManager.getConnection("jdbc:mysql://localhost:3306/ooproject", "root", "OOproject2019");
 		}
 		catch (Exception exc)	
 		{
