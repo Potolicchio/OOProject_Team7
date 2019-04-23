@@ -138,19 +138,6 @@ public class Login
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
-								
-				/*if (password.contains("king") && username.contains("One")) {
-					txtPassword.setText(null);
-					txtUsername.setText(null);
-					
-					frmLogin.setVisible(false);
-					Home.main(null);
-				}
-				else
-				{ 
-					
-				}*/
-				
 			}
 		});
 		
