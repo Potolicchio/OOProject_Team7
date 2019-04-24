@@ -240,7 +240,7 @@ public class Registration_Form {
 				try {
 						Connection	myConn = Database.getConnection();
 						// Login Table
-						String query  = "insert into Login (email, password) values ( ?, ?)";
+						String query  = "insert into Login (email, password) values ( ?, ?);";
 
 						myStmt = myConn.prepareStatement(query);
 						myStmt.setString(1, email);
@@ -248,7 +248,8 @@ public class Registration_Form {
 						myRs = myStmt.executeUpdate();
 						
 						// Get UserID that has just been created
-						myStmt = myConn.prepareStatement("SELECT MAX(userID) FROM Login");
+						query = "select max(userID) FROM Login";
+						myStmt = myConn.prepareStatement(query);
 						ResultSet rs = myStmt.executeQuery();
 						
 						// People's Table.
