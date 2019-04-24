@@ -68,10 +68,11 @@ public class Games {
 		{
 			//Append names with % so we can use SQL "like" command
 			teamName += "%";
-			myStmt = Database.getConnection().prepareStatement("SELECT * FROM Games WHERE homeTeam LIKE ?");
+			myStmt = Database.getConnection().prepareStatement("SELECT * FROM Games WHERE homeTeam LIKE ? OR awayTeam LIKE ?");
 			
 			//set value of ? accordingly			
 			myStmt.setString(1, teamName);
+			myStmt.setString(2, teamName);
 			
 			myRs = myStmt.executeQuery();
 			
@@ -262,5 +263,4 @@ public class Games {
 		table = new JTable();
 		scrollPane.setViewportView(table);
 	}
-
 }
