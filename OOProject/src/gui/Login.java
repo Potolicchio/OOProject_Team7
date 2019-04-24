@@ -119,8 +119,6 @@ public class Login
 				String username = txtUsername.getText();
 				String query = "SELECT * FROM Login WHERE email = ? AND password = ?";
 				
-				
-				// Connect to database
 				try {
 						ps = Database.getConnection().prepareStatement(query);
 						ps.setString(1, username);
@@ -129,12 +127,16 @@ public class Login
 					
 					if (rs.next())
 					{
-						frmLogin.dispose();
 						ps.close();
+						frmLogin.dispose();
 						Home.main(null);
 					}
 					else
+					{
 						JOptionPane.showMessageDialog(null, "Invalid Login Details", "Login Error", JOptionPane.ERROR_MESSAGE);
+						txtPassword.setText(null);
+					}
+					
 					
 				} catch (SQLException e) {
 					e.printStackTrace();

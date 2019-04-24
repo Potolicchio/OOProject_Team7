@@ -10,11 +10,14 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import javax.swing.SwingConstants;
 
+import com.mysql.cj.xdevapi.Statement;
+
 import application.Database;
 
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -30,7 +33,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
 import javax.swing.JPanel;
 import javax.swing.JRadioButtonMenuItem;
-
+import java.sql.*;
 public class Registration_Form {
 
 	private JFrame Registration;
@@ -184,12 +187,12 @@ public class Registration_Form {
 		
 		JRadioButton rb_Male = new JRadioButton("Male");
 		rb_Male.setBounds(369, 220, 53, 23);
-		rb_User.setActionCommand("Male");
+		rb_User.setActionCommand("M");
 		Registration.getContentPane().add(rb_Male);
 		
 		JRadioButton rb_Female = new JRadioButton("Female");
 		rb_Female.setBounds(424, 220, 65, 23);
-		rb_User.setActionCommand("Female");
+		rb_User.setActionCommand("F");
 		Registration.getContentPane().add(rb_Female);
 	
 		 ButtonGroup genderGroup = new ButtonGroup();
@@ -204,7 +207,9 @@ public class Registration_Form {
 				String lname = txtLastname.getText();
 				String email = txtEmail.getText();
 				String pword = txtPassword.getText();
-				String type = "";
+				String type = "" , gender = "";
+				PreparedStatement myStmt = null;
+				int myRs = 0;
 				
 				if (fname.equals(""))
 					JOptionPane.showMessageDialog(null, "Add a firstname", "Error", JOptionPane.ERROR_MESSAGE);
@@ -215,7 +220,10 @@ public class Registration_Form {
 				else if (email.equals("") || !email.contains("@") && !email.contains(".com"))
 					JOptionPane.showMessageDialog(null, "Invalid email", "Error", JOptionPane.ERROR_MESSAGE);
 				
-				if (!pword.equals(String.valueOf(txtConfirmPassword.getPassword())))
+				else if (pword.equals(""))
+					JOptionPane.showMessageDialog(null, "Add apassword", "Error", JOptionPane.ERROR_MESSAGE);
+				
+				else if (!pword.equals(String.valueOf(txtConfirmPassword.getPassword())))
 						JOptionPane.showMessageDialog(null, "Password does not match", "Error", JOptionPane.ERROR_MESSAGE);
 					
 				if (group.getSelection() == null)
@@ -223,18 +231,49 @@ public class Registration_Form {
 				else 
 					type = group.getSelection().getActionCommand();
 				
-								
+				if (genderGroup.getSelection() == null)
+					JOptionPane.showMessageDialog(null, "Please select a gender.", "Error", JOptionPane.ERROR_MESSAGE);	
+				else 
+					gender = genderGroup.getSelection().getActionCommand();
+				
+				
 				try {
-						String query  = "INSERT INTO Login (email, password)";
-						PreparedStatement ps;
+						Connection	myConn = Database.getConnection();
+						// Login Table
+						String query  = "insert into Login (email, password) values ( ?, ?)";
 
-						ps = Database.getConnection().prepareStatement(query);
-						ps.setString(1, email);
-						ps.setString(2, pword);
-					
-						if (ps.executeUpdate() > 0)
+						myStmt = myConn.prepareStatement(query);
+						myStmt.setString(1, email);
+						myStmt.setString(2, pword);
+						myRs = myStmt.executeUpdate();
+						
+						// Get UserID that has just been created
+						myStmt = myConn.prepareStatement("SELECT MAX(userID) FROM Login");
+						ResultSet rs = myStmt.executeQuery();
+						
+						// People's Table.
+						if (myRs == 1) {
+							query = "insert into people (userID, firstName, lastName, gender, age, phoneNumber, type) values (?, ?, ?, ?, ?, ?, ?)";
+							myStmt = myConn.prepareStatement(query);
+							myStmt.setInt(1, rs.getInt("userID"));
+							myStmt.setString(2, fname);
+							myStmt.setString(3, lname);
+							myStmt.setString(4, "M");
+							myStmt.setInt(5, 25);
+							myStmt.setString(6, "54646141");
+							myStmt.setString(7, type);
+							myRs += myStmt.executeUpdate();
+						}
+						
+						if (myRs == 2)
+						{
 							JOptionPane.showMessageDialog(null, "New Account Added.");
-					ps.close();
+							Registration.dispose();
+							Login.main(null);
+							myConn.close();
+						}
+						
+					myConn.close();
 					
 				} catch (SQLException e) {
 					e.printStackTrace();
