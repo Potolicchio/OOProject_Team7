@@ -16,7 +16,6 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.SwingConstants;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JScrollPane;
@@ -150,7 +149,7 @@ public class Teams {
 		});
 		
 		//Print data from DB to console to test program
-		Teams test = new Teams();
+		/*Teams test = new Teams();
 		
 		List<Team> testList = new ArrayList<>();
 		testList = test.getAllTeams();
@@ -176,7 +175,7 @@ public class Teams {
 			System.out.println("Losses: " + i.getLosses());
 			System.out.println("Ties: " + i.getTies());
 			System.out.println("Points: " + i.getPoints());
-		}
+		}*/
 	}
 
 	/**
