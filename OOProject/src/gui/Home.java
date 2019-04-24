@@ -72,7 +72,12 @@ public class Home {
 		JButton btnTeams = new JButton("Teams");
 		btnTeams.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				Teams.main(null);
+				try {
+					Teams.main(null);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		});
 		btnTeams.setBounds(174, 116, 117, 29);
