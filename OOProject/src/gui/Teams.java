@@ -193,7 +193,7 @@ public class Teams {
 	{
 		frmTeams = new JFrame();
 		frmTeams.setTitle("Teams");
-		frmTeams.setBounds(100, 100, 450, 300);
+		frmTeams.setBounds(100, 100, 606, 347);
 		frmTeams.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmTeams.getContentPane().setLayout(new BorderLayout(0, 0));
 		
@@ -254,6 +254,16 @@ public class Teams {
 		});
 		panel.add(btnSearch);
 		
+		JButton btnAddTeam = new JButton("Add Team");
+		btnAddTeam.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) 
+			{
+				frmTeams.setVisible(false);
+				AddTeam.main(null);
+			}
+		});
+		panel.add(btnAddTeam);
+		
 		JButton btnHome = new JButton("Home");
 		btnHome.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) 
@@ -269,16 +279,6 @@ public class Teams {
 		});
 		
 		panel.add(btnHome);
-		
-		JButton btnAddTeam = new JButton("Add Team");
-		btnAddTeam.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) 
-			{
-				frmTeams.setVisible(false);
-				AddTeam.main(null);
-			}
-		});
-		panel.add(btnAddTeam);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		frmTeams.getContentPane().add(scrollPane, BorderLayout.CENTER);
