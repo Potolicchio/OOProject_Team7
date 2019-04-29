@@ -195,7 +195,7 @@ public class AddGames {
 							
 							if (myRs == 1)
 							{
-								JOptionPane.showMessageDialog(null, "New Team Added.");
+								JOptionPane.showMessageDialog(null, "New Game Added.");
 								txtDate.setText(null);
 								txtTime.setText(null);
 								txtStadium.setText(null);
