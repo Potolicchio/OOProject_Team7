@@ -200,7 +200,7 @@ public class Login
 		separator_1.setBounds(10, 79, 412, 8);
 		frmLogin.getContentPane().add(separator_1);
 		
-		JLabel lblNew_user = new JLabel("New User?, Register");
+		JLabel lblNew_user = new JLabel("New User? Register");
 		lblNew_user.setFont(UIManager.getFont("ToolTip.font"));
 		lblNew_user.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		lblNew_user.addMouseListener(new MouseAdapter() {

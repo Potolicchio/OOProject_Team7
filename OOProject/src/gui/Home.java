@@ -13,10 +13,13 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
+import java.awt.Font;
+import java.awt.Color;
+import java.awt.Window.Type;
 
 public class Home {
 
-	private JFrame frame;
+	private JFrame Home;
 	private JLabel lblWelcome;
 
 	/**
@@ -27,7 +30,7 @@ public class Home {
 			public void run() {
 				try {
 					Home window = new Home(string);
-					window.frame.setVisible(true);
+					window.Home.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -46,14 +49,19 @@ public class Home {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize(String user) {
-		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
+		Home = new JFrame();
+		Home.setType(Type.UTILITY);
+		Home.setTitle("Home");
+		Home.setFont(new Font("Agency FB", Font.PLAIN, 16));
+		Home.getContentPane().setBackground(Color.GRAY);
+		Home.setBounds(100, 100, 450, 300);
+		Home.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		Home.getContentPane().setLayout(null);
 		
 		JLabel lblHome = new JLabel("Home");
-		lblHome.setBounds(210, 6, 61, 16);
-		frame.getContentPane().add(lblHome);
+		lblHome.setFont(new Font("Algerian", Font.BOLD | Font.ITALIC, 17));
+		lblHome.setBounds(195, 6, 76, 23);
+		Home.getContentPane().add(lblHome);
 		
 		
 		JButton btnGames = new JButton("Games");
@@ -62,11 +70,11 @@ public class Home {
 			}
 		});
 		btnGames.setBounds(174, 34, 117, 29);
-		frame.getContentPane().add(btnGames);
+		Home.getContentPane().add(btnGames);
 		
 		JButton btnSchedule = new JButton("Schedule");
 		btnSchedule.setBounds(174, 75, 117, 29);
-		frame.getContentPane().add(btnSchedule);
+		Home.getContentPane().add(btnSchedule);
 		
 		JButton btnTeams = new JButton("Teams");
 		btnTeams.addActionListener(new ActionListener() {
@@ -80,17 +88,17 @@ public class Home {
 			}
 		});
 		btnTeams.setBounds(174, 116, 117, 29);
-		frame.getContentPane().add(btnTeams);
+		Home.getContentPane().add(btnTeams);
 		
 		JButton btnAccount = new JButton("Account");
 		btnAccount.setBounds(174, 157, 117, 29);
-		frame.getContentPane().add(btnAccount);
+		Home.getContentPane().add(btnAccount);
 		
 		JButton btnLogOut = new JButton("Log Out");
 		btnLogOut.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				frame = new JFrame("Exit");
-				if (JOptionPane.showConfirmDialog(frame, "Confirm if you want to logout", "Login System",
+				Home = new JFrame("Exit");
+				if (JOptionPane.showConfirmDialog(Home, "Confirm if you want to logout", "Login System",
 					 JOptionPane.YES_NO_OPTION)== JOptionPane.YES_NO_OPTION)
 				{
 					System.exit(0);
@@ -98,12 +106,12 @@ public class Home {
 			}
 		});
 		btnLogOut.setBounds(174, 199, 117, 29);
-		frame.getContentPane().add(btnLogOut);
+		Home.getContentPane().add(btnLogOut);
 		
 		lblWelcome = new JLabel("");
-		lblWelcome.setBounds(10, 7, 125, 14);
+		lblWelcome.setBounds(10, 7, 117, 14);
 		lblWelcome.setText("Welcome! " + user);
-		frame.getContentPane().add(lblWelcome);
+		Home.getContentPane().add(lblWelcome);
 		
 	}
 }

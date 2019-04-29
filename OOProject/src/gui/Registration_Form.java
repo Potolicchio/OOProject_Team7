@@ -261,7 +261,7 @@ public class Registration_Form {
 							myStmt.setInt(1, rs.getInt("ID"));
 							myStmt.setString(2, fname);
 							myStmt.setString(3, lname);
-							myStmt.setString(4, "M");
+							myStmt.setString(4, gender);
 							myStmt.setInt(5, 25);
 							myStmt.setString(6, "54646141");
 							myStmt.setString(7, type);
