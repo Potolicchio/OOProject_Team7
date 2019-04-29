@@ -110,7 +110,7 @@ public class Home {
 		
 		lblWelcome = new JLabel("");
 		lblWelcome.setBounds(10, 7, 117, 14);
-		lblWelcome.setText("Welcome! " + user);
+		lblWelcome.setText("Welcome " + user + "!");
 		Home.getContentPane().add(lblWelcome);
 		
 	}
