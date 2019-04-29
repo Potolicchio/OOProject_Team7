@@ -271,6 +271,13 @@ public class Teams {
 		panel.add(btnHome);
 		
 		JButton btnAddTeam = new JButton("Add Team");
+		btnAddTeam.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) 
+			{
+				frmTeams.setVisible(false);
+				AddTeam.main(null);
+			}
+		});
 		panel.add(btnAddTeam);
 		
 		JScrollPane scrollPane = new JScrollPane();

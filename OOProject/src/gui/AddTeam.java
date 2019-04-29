@@ -15,6 +15,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.awt.event.ActionEvent;
+import java.awt.Color;
 
 public class AddTeam 
 {
@@ -57,6 +58,7 @@ public class AddTeam
 	private void initialize() 
 	{
 		frmCreateTeam = new JFrame();
+		frmCreateTeam.getContentPane().setBackground(Color.GRAY);
 		frmCreateTeam.setTitle("Create Team");
 		frmCreateTeam.setBounds(100, 100, 450, 300);
 		frmCreateTeam.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -196,7 +198,12 @@ public class AddTeam
 			public void actionPerformed(ActionEvent e) 
 			{
 				frmCreateTeam.dispose();
-				Home.main(null);
+				try {
+					Teams.main(null);
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 		btnCancel.setBounds(120, 227, 89, 23);

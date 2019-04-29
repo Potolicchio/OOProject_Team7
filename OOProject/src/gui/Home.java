@@ -67,7 +67,7 @@ public class Home {
 		
 		JLabel lblHome = new JLabel("Home");
 		lblHome.setFont(new Font("Algerian", Font.BOLD | Font.ITALIC, 17));
-		lblHome.setBounds(195, 6, 76, 23);
+		lblHome.setBounds(193, 62, 76, 23);
 		Home.getContentPane().add(lblHome);
 		
 		
@@ -76,12 +76,8 @@ public class Home {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnGames.setBounds(174, 34, 117, 29);
+		btnGames.setBounds(174, 96, 117, 29);
 		Home.getContentPane().add(btnGames);
-		
-		JButton btnSchedule = new JButton("Schedule");
-		btnSchedule.setBounds(174, 75, 117, 29);
-		Home.getContentPane().add(btnSchedule);
 		
 		JButton btnTeams = new JButton("Teams");
 		btnTeams.addActionListener(new ActionListener() {
@@ -96,12 +92,8 @@ public class Home {
 				}
 			}
 		});
-		btnTeams.setBounds(174, 116, 117, 29);
+		btnTeams.setBounds(174, 189, 117, 29);
 		Home.getContentPane().add(btnTeams);
-		
-		JButton btnAccount = new JButton("Account");
-		btnAccount.setBounds(174, 157, 117, 29);
-		Home.getContentPane().add(btnAccount);
 		
 		JButton btnLogOut = new JButton("Log Out");
 		btnLogOut.addActionListener(new ActionListener() {
@@ -114,11 +106,11 @@ public class Home {
 				}
 			}
 		});
-		btnLogOut.setBounds(174, 199, 117, 29);
+		btnLogOut.setBounds(309, 11, 93, 29);
 		Home.getContentPane().add(btnLogOut);
 		
 		lblWelcome = new JLabel("");
-		lblWelcome.setBounds(10, 7, 117, 14);
+		lblWelcome.setBounds(10, 18, 117, 14);
 
 		lblWelcome.setText("Welcome! " + user);
 		Home.getContentPane().add(lblWelcome);
