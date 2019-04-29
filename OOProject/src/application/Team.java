@@ -99,6 +99,8 @@ public class Team {
 	
 	public int calculatePoints()
 	{
+		
+		
 		return points;
 	}
 	

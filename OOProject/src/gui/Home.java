@@ -17,6 +17,7 @@ import java.awt.Font;
 import java.awt.Color;
 import java.awt.Window.Type;
 
+
 public class Home {
 
 	private JFrame Home;
@@ -25,12 +26,15 @@ public class Home {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String string) {
-		EventQueue.invokeLater(new Runnable() {
+	public static void main(String username)
+	{
+		EventQueue.invokeLater(new Runnable() 
+		{
 			public void run() {
 				try {
-					Home window = new Home(string);
-					window.Home.setVisible(true);
+						Home window = new Home(username);
+						window.Home.setVisible(true);
+					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -41,14 +45,17 @@ public class Home {
 	/**
 	 * Create the application.
 	 */
-	public Home(String user) {
-		initialize(user);
+	public Home(String user) 
+	{
+			initialize(user);
 	}
 
 	/**
 	 * Initialize the contents of the frame.
+	 * @wbp.parser.entryPoint
 	 */
-	private void initialize(String user) {
+	private void initialize(String user)
+	{	
 		Home = new JFrame();
 		Home.setType(Type.UTILITY);
 		Home.setTitle("Home");
@@ -60,7 +67,7 @@ public class Home {
 		
 		JLabel lblHome = new JLabel("Home");
 		lblHome.setFont(new Font("Algerian", Font.BOLD | Font.ITALIC, 17));
-		lblHome.setBounds(195, 6, 76, 23);
+		lblHome.setBounds(193, 62, 76, 23);
 		Home.getContentPane().add(lblHome);
 		
 		
@@ -69,16 +76,14 @@ public class Home {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnGames.setBounds(174, 34, 117, 29);
+		btnGames.setBounds(174, 96, 117, 29);
 		Home.getContentPane().add(btnGames);
-		
-		JButton btnSchedule = new JButton("Schedule");
-		btnSchedule.setBounds(174, 75, 117, 29);
-		Home.getContentPane().add(btnSchedule);
 		
 		JButton btnTeams = new JButton("Teams");
 		btnTeams.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				
+				
 				try {
 					Teams.main(null);
 				} catch (Exception e) {
@@ -87,12 +92,8 @@ public class Home {
 				}
 			}
 		});
-		btnTeams.setBounds(174, 116, 117, 29);
+		btnTeams.setBounds(174, 189, 117, 29);
 		Home.getContentPane().add(btnTeams);
-		
-		JButton btnAccount = new JButton("Account");
-		btnAccount.setBounds(174, 157, 117, 29);
-		Home.getContentPane().add(btnAccount);
 		
 		JButton btnLogOut = new JButton("Log Out");
 		btnLogOut.addActionListener(new ActionListener() {
@@ -105,12 +106,18 @@ public class Home {
 				}
 			}
 		});
-		btnLogOut.setBounds(174, 199, 117, 29);
+		btnLogOut.setBounds(309, 11, 93, 29);
 		Home.getContentPane().add(btnLogOut);
 		
 		lblWelcome = new JLabel("");
+<<<<<<< HEAD
 		lblWelcome.setBounds(10, 7, 117, 14);
 		lblWelcome.setText("Welcome " + user + "!");
+=======
+		lblWelcome.setBounds(10, 18, 117, 14);
+
+		lblWelcome.setText("Welcome! " + user);
+>>>>>>> refs/remotes/origin/master
 		Home.getContentPane().add(lblWelcome);
 		
 	}

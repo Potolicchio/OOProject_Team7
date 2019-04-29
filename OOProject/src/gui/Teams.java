@@ -254,6 +254,32 @@ public class Teams {
 		});
 		panel.add(btnSearch);
 		
+		JButton btnHome = new JButton("Home");
+		btnHome.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) 
+			{
+				try {
+					frmTeams.dispose();
+					Home.main(null);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		});
+		
+		panel.add(btnHome);
+		
+		JButton btnAddTeam = new JButton("Add Team");
+		btnAddTeam.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) 
+			{
+				frmTeams.setVisible(false);
+				AddTeam.main(null);
+			}
+		});
+		panel.add(btnAddTeam);
+		
 		JScrollPane scrollPane = new JScrollPane();
 		frmTeams.getContentPane().add(scrollPane, BorderLayout.CENTER);
 		
