@@ -17,6 +17,7 @@ import java.awt.Font;
 import java.awt.Color;
 import java.awt.Window.Type;
 
+
 public class Home {
 
 	private JFrame Home;
@@ -25,12 +26,15 @@ public class Home {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String string) {
-		EventQueue.invokeLater(new Runnable() {
+	public static void main(String username)
+	{
+		EventQueue.invokeLater(new Runnable() 
+		{
 			public void run() {
 				try {
-					Home window = new Home(string);
-					window.Home.setVisible(true);
+						Home window = new Home(username);
+						window.Home.setVisible(true);
+					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -41,14 +45,17 @@ public class Home {
 	/**
 	 * Create the application.
 	 */
-	public Home(String user) {
-		initialize(user);
+	public Home(String user) 
+	{
+			initialize(user);
 	}
 
 	/**
 	 * Initialize the contents of the frame.
+	 * @wbp.parser.entryPoint
 	 */
-	private void initialize(String user) {
+	private void initialize(String user)
+	{	
 		Home = new JFrame();
 		Home.setType(Type.UTILITY);
 		Home.setTitle("Home");
@@ -79,6 +86,8 @@ public class Home {
 		JButton btnTeams = new JButton("Teams");
 		btnTeams.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				
+				
 				try {
 					Teams.main(null);
 				} catch (Exception e) {
@@ -110,6 +119,7 @@ public class Home {
 		
 		lblWelcome = new JLabel("");
 		lblWelcome.setBounds(10, 7, 117, 14);
+
 		lblWelcome.setText("Welcome! " + user);
 		Home.getContentPane().add(lblWelcome);
 		
