@@ -264,7 +264,7 @@ public class Registration_Form {
 							myStmt.setString(4, "M");
 							myStmt.setInt(5, 25);
 							myStmt.setString(6, "54646141");
-							myStmt.setString(7, type);
+							myStmt.setString(7, "player");
 							myRs += myStmt.executeUpdate();
 						}
 						
