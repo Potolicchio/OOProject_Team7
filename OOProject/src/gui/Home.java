@@ -74,6 +74,12 @@ public class Home {
 		JButton btnGames = new JButton("Games");
 		btnGames.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				try {
+					Games.main(null);
+				} catch (Exception e3) {
+					// TODO Auto-generated catch block
+					e3.printStackTrace();
+				}
 			}
 		});
 		btnGames.setBounds(174, 96, 117, 29);
@@ -82,8 +88,6 @@ public class Home {
 		JButton btnTeams = new JButton("Teams");
 		btnTeams.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
-				
 				try {
 					Teams.main(null);
 				} catch (Exception e) {

@@ -257,6 +257,29 @@ public class Games {
 		});
 		panel.add(btnSearch);
 		
+		JButton btnAddGame = new JButton("Add Game");
+		btnAddGame.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frmGames.setVisible(false);
+				AddGames.main(null);
+			}
+		});
+		panel.add(btnAddGame);
+		
+		JButton btnHome = new JButton("Home");
+		btnHome.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					frmGames.dispose();
+					Home.main(null);
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
+		panel.add(btnHome);
+		
 		JScrollPane scrollPane = new JScrollPane();
 		frmGames.getContentPane().add(scrollPane, BorderLayout.CENTER);
 		
