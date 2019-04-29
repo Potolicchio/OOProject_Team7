@@ -4,6 +4,8 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.BorderLayout;
 import javax.swing.SwingConstants;
 import javax.swing.BoxLayout;
@@ -85,11 +87,21 @@ public class Home {
 		frame.getContentPane().add(btnAccount);
 		
 		JButton btnLogOut = new JButton("Log Out");
+		btnLogOut.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				frame = new JFrame("Exit");
+				if (JOptionPane.showConfirmDialog(frame, "Confirm if you want to logout", "Login System",
+					 JOptionPane.YES_NO_OPTION)== JOptionPane.YES_NO_OPTION)
+				{
+					System.exit(0);
+				}
+			}
+		});
 		btnLogOut.setBounds(174, 199, 117, 29);
 		frame.getContentPane().add(btnLogOut);
 		
 		lblWelcome = new JLabel("");
-		lblWelcome.setBounds(10, 7, 96, 14);
+		lblWelcome.setBounds(10, 7, 125, 14);
 		lblWelcome.setText("Welcome! " + user);
 		frame.getContentPane().add(lblWelcome);
 		
