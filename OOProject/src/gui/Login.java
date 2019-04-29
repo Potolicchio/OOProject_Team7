@@ -127,10 +127,17 @@ public class Login
 					
 					if (rs.next())
 					{
-						ps.close();
+						query = "SELECT firstName FROM people WHERE userID = ?;";
+						ps = Database.getConnection().prepareStatement(query);
+						ps.setInt(1, rs.getInt("userID"));
+						rs = ps.executeQuery();
+						rs.next();
+						
 						frmLogin.dispose();
-						Home.main(null);
+						Home.main(rs.getString("firstName"));
+						ps.close();
 					}
+					
 					else
 					{
 						JOptionPane.showMessageDialog(null, "Invalid Login Details", "Login Error", JOptionPane.ERROR_MESSAGE);

@@ -239,24 +239,26 @@ public class Registration_Form {
 				
 				try {
 						Connection	myConn = Database.getConnection();
-						// Login Table
 						String query  = "insert into Login (email, password) values ( ?, ?);";
 
 						myStmt = myConn.prepareStatement(query);
 						myStmt.setString(1, email);
 						myStmt.setString(2, pword);
 						myRs = myStmt.executeUpdate();
+						System.out.println("End of part 1");
 						
 						// Get UserID that has just been created
-						query = "select max(userID) FROM Login";
+						query = "select MAX(userID) AS ID FROM Login";
 						myStmt = myConn.prepareStatement(query);
 						ResultSet rs = myStmt.executeQuery();
 						
 						// People's Table.
-						if (myRs == 1) {
+						if (myRs == 1) 
+						{
 							query = "insert into people (userID, firstName, lastName, gender, age, phoneNumber, type) values (?, ?, ?, ?, ?, ?, ?)";
 							myStmt = myConn.prepareStatement(query);
-							myStmt.setInt(1, rs.getInt("userID"));
+							rs.next();
+							myStmt.setInt(1, rs.getInt("ID"));
 							myStmt.setString(2, fname);
 							myStmt.setString(3, lname);
 							myStmt.setString(4, "M");
