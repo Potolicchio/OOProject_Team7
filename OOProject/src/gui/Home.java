@@ -110,14 +110,9 @@ public class Home {
 		Home.getContentPane().add(btnLogOut);
 		
 		lblWelcome = new JLabel("");
-<<<<<<< HEAD
-		lblWelcome.setBounds(10, 7, 117, 14);
-		lblWelcome.setText("Welcome " + user + "!");
-=======
 		lblWelcome.setBounds(10, 18, 117, 14);
-
-		lblWelcome.setText("Welcome! " + user);
->>>>>>> refs/remotes/origin/master
+		
+		lblWelcome.setText("Welcome " + user + "!");
 		Home.getContentPane().add(lblWelcome);
 		
 	}
