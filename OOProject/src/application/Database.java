@@ -6,6 +6,10 @@ import java.util.Properties;
 
 public class Database {
 	
+	/**
+	 * Method that connects to the local MySQL database.
+	 * @return myConn connection to DB
+	 */
 	public static Connection getConnection()
 	{
 		Connection myConn = null;

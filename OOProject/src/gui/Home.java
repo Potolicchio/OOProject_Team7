@@ -67,7 +67,7 @@ public class Home {
 		
 		JLabel lblHome = new JLabel("Home");
 		lblHome.setFont(new Font("Algerian", Font.BOLD | Font.ITALIC, 17));
-		lblHome.setBounds(193, 62, 76, 23);
+		lblHome.setBounds(199, 61, 76, 23);
 		Home.getContentPane().add(lblHome);
 		
 		
@@ -82,7 +82,7 @@ public class Home {
 				}
 			}
 		});
-		btnGames.setBounds(174, 96, 117, 29);
+		btnGames.setBounds(168, 117, 117, 29);
 		Home.getContentPane().add(btnGames);
 		
 		JButton btnTeams = new JButton("Teams");
@@ -96,7 +96,7 @@ public class Home {
 				}
 			}
 		});
-		btnTeams.setBounds(174, 189, 117, 29);
+		btnTeams.setBounds(168, 166, 117, 29);
 		Home.getContentPane().add(btnTeams);
 		
 		JButton btnLogOut = new JButton("Log Out");
@@ -110,13 +110,13 @@ public class Home {
 				}
 			}
 		});
-		btnLogOut.setBounds(309, 11, 93, 29);
+		btnLogOut.setBounds(340, 12, 93, 29);
 		Home.getContentPane().add(btnLogOut);
 		
 		lblWelcome = new JLabel("");
 		lblWelcome.setBounds(10, 18, 117, 14);
-
-		lblWelcome.setText("Welcome! " + user);
+		
+		lblWelcome.setText("Welcome " + user + "!");
 		Home.getContentPane().add(lblWelcome);
 		
 	}
